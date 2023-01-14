@@ -1,0 +1,156 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous"
+      />
+      <title>Patient Details</title>
+      
+    </head>
+    <style>
+      
+      .collapsible {
+        background-color: #777;
+        color: rgb(255, 244, 244);
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+      
+      .active, .collapsible:hover {
+        background-color: #555;
+      }
+      
+      .content {
+        padding: 0 18px;
+      
+        
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #9f9a9a;
+      }
+      
+      table, th, td {
+        border: 1px solid white;
+      }
+    </style>
+    <body class="container pt-5 bg-dark">
+
+      <button class="collapsible">Name</button>
+    <div class="content">
+      
+    <button class="btn btn-success" id='btnSpeak' style="margin-top: 10px;">Ask</button>
+        <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+        <div class="p-3" id="data" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+          <span id="final" class="text-light"></span>
+          <span id="interim" class="text-secondary"></span>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-success" id="start" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+          <button class="btn btn-danger" id="stop"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+          
+          <p id="status" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+        </div>
+      </div>
+
+      <button class="collapsible">Age</button>
+      <div class="content">
+        
+      <button class="btn btn-success" id='btnSpeak2' style="margin-top: 10px;">Ask</button>
+          <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+          <div class="p-3" id="data_2" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+            <span id="final_2" class="text-light"></span>
+            <span id="interim_2" class="text-secondary"></span>
+          </div>
+          <div class="mt-4">
+            <button class="btn btn-success" id="start_2" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+            <button class="btn btn-danger" id="stop_2"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+            
+            <p id="status_2" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+          </div>
+        </div>  
+
+
+        <button class="collapsible">Contact Details</button>
+      <div class="content">
+        
+      <button class="btn btn-success" id='btnSpeak3' style="margin-top: 10px;">Ask</button>
+          <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+          <div class="p-3" id="data_3" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+            <span id="final_3" class="text-light"></span>
+            <span id="interim_3" class="text-secondary"></span>
+          </div>
+          <div class="mt-4">
+            <button class="btn btn-success" id="start_3" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+            <button class="btn btn-danger" id="stop_3"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+            
+            <p id="status_3" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+          </div>
+        </div>  
+
+        <button class="collapsible">Prescribed Tests</button>
+        <div class="content">  
+           
+            <label for="cars" class="mt-4 text-dark" style="margin-bottom: 10px;">Choose a test:</label>
+           
+              <select name="tests" id="tests">
+              <option value="Liver Panel">Liver Panel</option>
+              <option value="Diabetes Panel">Diabetes Panel</option>
+              <option value="Bone Mineral Test">Bone Mineral Test</option>
+              </select>  
+                  
+            
+          </div>  
+     
+      <button class="btn btn-success" id="Add"  style="margin-top: 10px; margin-left:18px;" onclick="myFunc()">Add</button>
+        <div style="margin-top: 50px;">
+          <table id="myTable" style="color: rgb(254, 249, 249);">
+            <tr>
+              <th>Name</th>
+              <th>Age</th> 
+              <th>Contact_Details</th>
+              <th>Prescribed_Tests</th>
+            </tr>
+
+            <tr>
+              <td>Alfreds</td>
+              <td>Maria</td> 
+              <td>Germany</td>
+              <td>MIR</td>
+            </tr>
+
+            <tr>
+              <td>Alfreds</td>
+              <td>Maria</td> 
+              <td>Germany</td>
+              <td>X-RAY</td>
+            </tr>
+
+          </table>
+        </div>
+        <button id="exportdata">Export to excel</button>
+
+    <script>
+      var table2excel = new Table2Excel();
+
+      document.getElementById('exportdata').addEventListener('click', function() {
+        table2excel.export(document.querySelectorAll('#myTable'));
+      });
+    </script>
+        <script src="static/js/s2t.js"></script>
+        <script src="static/js/table2excel.js"></script>
+      </body>
+     
+    
+  </html>
