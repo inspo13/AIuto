@@ -1,0 +1,608 @@
+<!--<!DOCTYPE html>
+
+<html>
+  <head>
+   <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous"
+      />
+      <title>Patient Details</title>
+
+    
+    <script src="../static/js/s2t.js"></script>
+    <script src="../static/js/table2excel.js"></script>
+  </head>
+
+  <style>
+      
+      .collapsible {
+        background-color: #777;
+        color: rgb(255, 244, 244);
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+      
+      .active, .collapsible:hover {
+        background-color: #555;
+      }
+      
+      .content {
+        padding: 0 18px;
+      
+        
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #9f9a9a;
+      }
+      
+      table, th, td {
+        border: 1px solid white;
+      }
+    </style>
+
+  <body  class="container pt-5 bg-dark">
+
+    <button class="collapsible">Name</button>
+    <div class="content">
+      
+    <button class="btn btn-success" id='btnSpeak' style="margin-top: 10px;">Ask</button>
+        <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+        <div class="p-3" id="data" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+          <span id="final" class="text-light"></span>
+          <span id="interim" class="text-secondary"></span>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-success" id="start" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+          <button class="btn btn-danger" id="stop"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+          
+          <p id="status" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+        </div>
+      </div>
+
+      <button class="collapsible">Age</button>
+      <div class="content">
+        
+      <button class="btn btn-success" id='btnSpeak2' style="margin-top: 10px;">Ask</button>
+          <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+          <div class="p-3" id="data_2" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+            <span id="final_2" class="text-light"></span>
+            <span id="interim_2" class="text-secondary"></span>
+          </div>
+          <div class="mt-4">
+            <button class="btn btn-success" id="start_2" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+            <button class="btn btn-danger" id="stop_2"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+            
+            <p id="status_2" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+          </div>
+        </div>  
+
+
+        <button class="collapsible">Contact Details</button>
+      <div class="content">
+        
+      <button class="btn btn-success" id='btnSpeak3' style="margin-top: 10px;">Ask</button>
+          <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+          <div class="p-3" id="data_3" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+            <span id="final_3" class="text-light"></span>
+            <span id="interim_3" class="text-secondary"></span>
+          </div>
+          <div class="mt-4">
+            <button class="btn btn-success" id="start_3" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+            <button class="btn btn-danger" id="stop_3"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+            
+            <p id="status_3" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+          </div>
+        </div>  
+
+        <button class="collapsible">Prescribed Tests</button>
+        <div class="content">  
+           
+            <label for="cars" class="mt-4 text-dark" style="margin-bottom: 10px;">Choose a test:</label>
+           
+              <select name="tests" id="tests">
+              <option value="Liver Panel">Liver Panel</option>
+              <option value="Diabetes Panel">Diabetes Panel</option>
+              <option value="Bone Mineral Test">Bone Mineral Test</option>
+              </select>  
+                  
+            
+          </div>  
+     
+      <button class="btn btn-success" id="Add"  style="margin-top: 10px; margin-left:18px;" onclick="myFunc()">Add</button>
+        <div style="margin-top: 50px;">
+          <table id="table" style="color: rgb(254, 249, 249);">
+            <tr>
+              <th>Name</th>
+              <th>Age</th> 
+              <th>Contact_Details</th>
+              <th>Prescribed_Tests</th>
+            </tr>
+
+            <tr>
+              <td>Alfreds</td>
+              <td>Maria</td> 
+              <td>Germany</td>
+              <td>MIR</td>
+            </tr>
+
+            <tr>
+              <td>Alfreds</td>
+              <td>Maria</td> 
+              <td>Germany</td>
+              <td>X-RAY</td>
+            </tr>
+
+          </table>
+        </div>
+
+    <button id="export">Export to excel</button>
+
+    <script>
+      var table2excel = new Table2Excel();
+
+      document.getElementById('export').addEventListener('click', function() {
+        table2excel.export(document.querySelectorAll('table'));
+      });
+    </script>
+
+  </body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <title>Patient Details</title>
+
+    <script src="../static/js/table2excel.js"></script>
+    
+  </head>
+  <style>
+    
+    .collapsible {
+      background-color: #777;
+      color: rgb(255, 244, 244);
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+    
+    .active, .collapsible:hover {
+      background-color: #555;
+    }
+    
+    .content {
+      padding: 0 18px;
+    
+      
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: #9f9a9a;
+    }
+    
+    table, th, td {
+      border: 1px solid white;
+    }
+  </style>
+  <body class="container pt-5 bg-dark">
+
+    <button class="collapsible">Name</button>
+  <div class="content">
+    
+  <button class="btn btn-success" id='btnSpeak' style="margin-top: 10px;">Ask</button>
+      <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+      <div class="p-3" id="data" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+        <span id="final" class="text-light"></span>
+        <span id="interim" class="text-secondary"></span>
+      </div>
+      <div class="mt-4">
+        <button class="btn btn-success" id="start" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+        <button class="btn btn-danger" id="stop"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+        
+        <p id="status" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+      </div>
+    </div>
+
+    <button class="collapsible">Age</button>
+    <div class="content">
+      
+    <button class="btn btn-success" id='btnSpeak2' style="margin-top: 10px;">Ask</button>
+        <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+        <div class="p-3" id="data_2" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+          <span id="final_2" class="text-light"></span>
+          <span id="interim_2" class="text-secondary"></span>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-success" id="start_2" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+          <button class="btn btn-danger" id="stop_2"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+          
+          <p id="status_2" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+        </div>
+      </div>  
+
+
+      <button class="collapsible">Contact Details</button>
+    <div class="content">
+      
+    <button class="btn btn-success" id='btnSpeak3' style="margin-top: 10px;">Ask</button>
+        <h3 class="mt-4 text-dark" style="margin-top: 5px;">Response</h3>
+        <div class="p-3" id="data_3" style="border: 1px solid gray; height: 60px; border-radius: 8px;">
+          <span id="final_3" class="text-light"></span>
+          <span id="interim_3" class="text-secondary"></span>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-success" id="start_3" style="margin-top: 5px; margin-bottom: 5px;">Start</button>
+          <button class="btn btn-danger" id="stop_3"  style="margin-top: 5px; margin-bottom: 5px;">Stop</button>
+          
+          <p id="status_3" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
+        </div>
+      </div>  
+
+      <button class="collapsible">Prescribed Tests</button>
+      <div class="content">  
+         
+          <label for="cars" class="mt-4 text-dark" style="margin-bottom: 10px;">Choose a test:</label>
+         
+            <select name="tests" id="tests">
+            <option value="Liver Panel">Liver Panel</option>
+            <option value="Diabetes Panel">Diabetes Panel</option>
+            <option value="Bone Mineral Test">Bone Mineral Test</option>
+            </select>  
+                
+          
+        </div>  
+   
+    <button class="btn btn-success" id="Add"  style="margin-top: 10px; margin-left:18px;" onclick="myFunc()">Add</button>
+      <div style="margin-top: 50px;">
+        <table id="table" style="color: rgb(254, 249, 249);">
+          <tr>
+            <th>Name</th>
+            <th>Age</th> 
+            <th>Contact_Details</th>
+            <th>Prescribed_Tests</th>
+          </tr>
+
+          <tr>
+            <td>Alfreds</td>
+            <td>Maria</td> 
+            <td>Germany</td>
+            <td>MIR</td>
+          </tr>
+
+          <tr>
+            <td>Alfreds</td>
+            <td>Maria</td> 
+            <td>Germany</td>
+            <td>X-RAY</td>
+          </tr>
+
+        </table>
+
+        
+      </div>
+      
+
+      
+
+      <button id="export">Export to excel</button>
+    <script>
+      var table2excel = new Table2Excel();
+
+      document.getElementById('export').addEventListener('click', function() {
+        table2excel.export(document.querySelectorAll('table'));
+      });
+    </script>
+    <script>
+//Response-Speech to text
+//q1
+
+if ("webkitSpeechRecognition" in window) {
+    // Initialize webkitSpeechRecognition
+    let speechRecognition = new webkitSpeechRecognition();
+  
+    // String for the Final Transcript
+    let final_transcript = "";
+  
+    // Set the properties for the Speech Recognition object
+    speechRecognition.continuous = true;
+    speechRecognition.interimResults = true;
+  
+    // Callback Function for the onStart Event
+    speechRecognition.onstart = () => {
+      // Show the Status Element
+      document.querySelector("#status").style.display = "block";
+    };
+    speechRecognition.onerror = () => {
+      // Hide the Status Element
+      document.querySelector("#status").style.display = "none";
+    };
+    speechRecognition.onend = () => {
+      // Hide the Status Element
+      document.querySelector("#status").style.display = "none";
+    };
+  
+    speechRecognition.onresult = (event) => {
+      // Create the interim transcript string locally because we don't want it to persist like final transcript
+      let interim_transcript = "";
+  
+      // Loop through the results from the speech recognition object.
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        // If the result item is Final, add it to Final Transcript, Else add it to Interim transcript
+        if (event.results[i].isFinal) {
+          final_transcript += event.results[i][0].transcript;
+        } else {
+          interim_transcript += event.results[i][0].transcript;
+        }
+      }
+  
+      // Set the Final transcript and Interim transcript.
+      document.querySelector("#final").innerHTML = final_transcript;
+      document.querySelector("#interim").innerHTML = interim_transcript;
+    };
+  
+    // Set the onClick property of the start button
+    document.querySelector("#start").onclick = () => {
+      // Start the Speech Recognition
+      speechRecognition.start();
+    };
+    
+      // Set the onClick property of the stop button
+     document.querySelector("#stop").onclick = () => {
+      // Stop the Speech Recognition
+      speechRecognition.stop();
+    
+      };
+  
+  } else {
+    console.log("Speech Recognition Not Available");
+  
+  }
+
+//q2
+
+  if ("webkitSpeechRecognition" in window) {
+    // Initialize webkitSpeechRecognition
+    let speechRecognition = new webkitSpeechRecognition();
+  
+    // String for the Final Transcript
+    let final_transcript = "";
+  
+    // Set the properties for the Speech Recognition object
+    speechRecognition.continuous = true;
+    speechRecognition.interimResults = true;
+  
+    // Callback Function for the onStart Event
+    speechRecognition.onstart = () => {
+      // Show the Status Element
+      document.querySelector("#status_2").style.display = "block";
+    };
+    speechRecognition.onerror = () => {
+      // Hide the Status Element
+      document.querySelector("#status_2").style.display = "none";
+    };
+    speechRecognition.onend = () => {
+      // Hide the Status Element
+      document.querySelector("#status_2").style.display = "none";
+    };
+  
+    speechRecognition.onresult = (event) => {
+      // Create the interim transcript string locally because we don't want it to persist like final transcript
+      let interim_transcript = "";
+  
+      // Loop through the results from the speech recognition object.
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        // If the result item is Final, add it to Final Transcript, Else add it to Interim transcript
+        if (event.results[i].isFinal) {
+          final_transcript += event.results[i][0].transcript;
+        } else {
+          interim_transcript += event.results[i][0].transcript;
+        }
+      }
+  
+      // Set the Final transcript and Interim transcript.
+      document.querySelector("#final_2").innerHTML = final_transcript;
+      document.querySelector("#interim_2").innerHTML = interim_transcript;
+    };
+  
+    // Set the onClick property of the start button
+    document.querySelector("#start_2").onclick = () => {
+      // Start the Speech Recognition
+      speechRecognition.start();
+    };
+    
+      // Set the onClick property of the stop button
+     document.querySelector("#stop_2").onclick = () => {
+      // Stop the Speech Recognition
+      speechRecognition.stop();
+    
+      };
+  
+  } else {
+    console.log("Speech Recognition Not Available");
+  
+  }
+
+//q3
+if ("webkitSpeechRecognition" in window) {
+  // Initialize webkitSpeechRecognition
+  let speechRecognition = new webkitSpeechRecognition();
+
+  // String for the Final Transcript
+  let final_transcript = "";
+
+  // Set the properties for the Speech Recognition object
+  speechRecognition.continuous = true;
+  speechRecognition.interimResults = true;
+
+  // Callback Function for the onStart Event
+  speechRecognition.onstart = () => {
+    // Show the Status Element
+    document.querySelector("#status_3").style.display = "block";
+  };
+  speechRecognition.onerror = () => {
+    // Hide the Status Element
+    document.querySelector("#status_3").style.display = "none";
+  };
+  speechRecognition.onend = () => {
+    // Hide the Status Element
+    document.querySelector("#status_3").style.display = "none";
+  };
+
+  speechRecognition.onresult = (event) => {
+    // Create the interim transcript string locally because we don't want it to persist like final transcript
+    let interim_transcript = "";
+
+    // Loop through the results from the speech recognition object.
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      // If the result item is Final, add it to Final Transcript, Else add it to Interim transcript
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+      }
+    }
+
+    // Set the Final transcript and Interim transcript.
+    document.querySelector("#final_3").innerHTML = final_transcript;
+    document.querySelector("#interim_3").innerHTML = interim_transcript;
+  };
+
+  // Set the onClick property of the start button
+  document.querySelector("#start_3").onclick = () => {
+    // Start the Speech Recognition
+    speechRecognition.start();
+  };
+  
+    // Set the onClick property of the stop button
+   document.querySelector("#stop_3").onclick = () => {
+    // Stop the Speech Recognition
+    speechRecognition.stop();
+  
+    };
+
+} else {
+  console.log("Speech Recognition Not Available");
+
+}  
+
+
+  //Ask
+  //q1
+  var btnSpeak = document.querySelector('#btnSpeak');
+        var synth = window.speechSynthesis;
+        var voices = [];
+        let quest='what is your name';
+        PopulateVoices();
+        if(speechSynthesis !== undefined){
+            speechSynthesis.onvoiceschanged = PopulateVoices;
+        }
+        btnSpeak.addEventListener('click', ()=> {
+            var toSpeak = new SpeechSynthesisUtterance(quest);
+            synth.speak(toSpeak);
+        });
+        function PopulateVoices(){
+        }
+
+//q2
+        var btnSpeak2 = document.querySelector('#btnSpeak2');
+        var synth = window.speechSynthesis;
+        var voices = [];
+        let quest2='what is your age';
+        PopulateVoices();
+        if(speechSynthesis !== undefined){
+            speechSynthesis.onvoiceschanged = PopulateVoices;
+        }
+        btnSpeak2.addEventListener('click', ()=> {
+            var toSpeak = new SpeechSynthesisUtterance(quest2);
+            synth.speak(toSpeak);
+        });
+        function PopulateVoices(){
+        }
+
+//q3
+
+var btnSpeak3 = document.querySelector('#btnSpeak3');
+var synth = window.speechSynthesis;
+var voices = [];
+let quest3='what is your phone number';
+PopulateVoices();
+if(speechSynthesis !== undefined){
+    speechSynthesis.onvoiceschanged = PopulateVoices;
+}
+btnSpeak3.addEventListener('click', ()=> {
+    var toSpeak = new SpeechSynthesisUtterance(quest3);
+    synth.speak(toSpeak);
+});
+function PopulateVoices(){
+}
+  //Table
+  function myFunc() {
+    var name = document.getElementById('data').innerHTML;
+    var age = document.getElementById('data_2').innerHTML;
+    var phone_no = document.getElementById('data_3').innerHTML;
+    //var prescribed_test = document.querySelector('#tests').innerHTML;
+    var prescribed_test;
+    selectElement = document.querySelector('#tests');
+    var prescribed_test = selectElement.value;
+    var table = document.getElementById("table");
+    var row = table.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = name;
+    cell2.innerHTML = age;
+    cell3.innerHTML = phone_no;
+    cell4.innerHTML = prescribed_test;
+  }
+  //collapsible
+  var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+
+
+
+
+
+    </script>
+      
+
+    </body>
+   
+  
+</html>
